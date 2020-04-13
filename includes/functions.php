@@ -4,7 +4,16 @@
      * Defina uma função que receba o id inteiro e retorne a
      * pizza quem tem como id este que foi dado
      */
-    function pizzaPorId($id){}
+    include("pizzas.php");
+    
+    function pizzaPorId($id){
+        global $pizzas;
+        foreach($pizzas as $pizza) {
+            if($id == $pizza["id"]) {
+                return $pizza["nome"];
+            }
+        }
+    }
 
     /**
      * Defina uma função que retorne um array com as pizzas
