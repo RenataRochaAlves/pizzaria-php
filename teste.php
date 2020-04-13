@@ -5,5 +5,12 @@
      * os testes das funções desenvolvidas em
      * functions.php
      */
+
+     include("includes/functions.php");
+     include("includes/pizzas.php");
+
+     $testeid = pizzaPorId(1);
+
+     echo $testeid;
     
 ?>
