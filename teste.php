@@ -6,11 +6,12 @@
      * functions.php
      */
 
-     include("includes/functions.php");
-     include("includes/pizzas.php");
+    include("includes/pizzas.php");
+    include("includes/functions.php");
 
-     $testeid = pizzaPorId(1);
+    $pizzas = pizzasSemDestaque();
 
-     echo $testeid;
+    echo "<pre>";
+    print_r($pizzas);
     
 ?>
