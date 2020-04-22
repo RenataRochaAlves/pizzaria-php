@@ -7,6 +7,14 @@ if($_GET){
 	$id = $_GET['id'];
 
 	$pizza = pizzaPorId($id);
+
+	$anterior = $pizza['id'] - 1;
+
+	$pizzaAnterior = pizzaPorId($anterior);
+
+	$seguinte = $pizza['id'] + 1;
+
+	$pizzaSeguinte = pizzaPorId($seguinte);
 }
 
 
@@ -30,9 +38,9 @@ if($_GET){
 		<!-- o implode imprime todos os itens do array, no primeiro espaço coloca o separador e depois o array -->
 		<div>Ingredientes: <?= implode(', ', $pizza['ingredientes'])?></div>
 		<button>+ Add</button>
-		<a href="#" class="prev">&lt;</a>
-		<a href="#" class="next">&gt;</a>
+		<a href="/pizzaria-php/pizza.php?id=<?= $pizzaAnterior['id'] ?>" class="prev">&lt;</a>
+		<a href="/pizzaria-php/pizza.php?id=<?= $pizzaSeguinte['id'] ?>" class="next">&gt;</a>
 	</main>
-	
+
 </body>
 </html>
