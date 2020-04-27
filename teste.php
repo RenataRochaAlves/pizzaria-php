@@ -9,9 +9,12 @@
     include("includes/pizzas.php");
     include("includes/functions.php");
 
-    $pizzas = pizzasSemDestaque();
+    $teste = carregaUsuario();
 
     echo "<pre>";
-    print_r($pizzas);
+    print_r($teste);
+    echo "</pre>";
+
+    addUsuario("Isabella Alves", "9 9999-9999", "Rua dos Anjos, 334", "abobora", "img/skdjas.png");
     
 ?>
