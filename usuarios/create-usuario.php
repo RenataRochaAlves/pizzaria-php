@@ -1,16 +1,50 @@
 <?php 
 
+
+$nome = '';
+$senha = '';
+$confirmacao = '';
+$telefone = '';
+$endereco = '';
+$email = '';
+
 $nomeOk = true;
 $senhaOK = true;
+$confirmacaoOk = true;
+$telefoneOk = true;
+$enderecoOk = true;
+$emailOk = true;
 
+// verifica se foram enviados dados
 if($_POST){
-    if($_POST['nome'] == ''){
+    // cria a persistência de dados
+    $nome = $_POST['nome'];
+    $senha = $_POST['senha'];
+    $confirmacao = $_POST['confirmacao'];
+    $telefone = $_POST['telefone'];
+    $endereco = $_POST['endereco'];
+    $email = $_POST['email'];
+
+    // mede o tamanho da string e diz se ela é menor
+    if(strlen($nome) < 5){
         $nomeOk = false;
+        // interrompe o script e imprime a mensagem na tela
+        // die("Nome Inválido");
     }
-    if($_POST['senha'] != $_POST['confirmacao']){
+    if($senha != $confirmacao || strlen($senha) < 5){
         $senhaOk = false;
+        $confirmacaoOk = false;
     }
-}
+    if(strlen($telefone) < 10) {
+        $telefoneOk = false;
+    }
+    if(strlen($endereco) < 20) {
+        $enderecoOk = false;
+    }
+    if(strpos($email, '@') == false){
+        $emailOk = false;
+    }
+ }
 
 ?>
 
@@ -29,29 +63,33 @@ if($_POST){
 	<form id="form-usuario" method="POST">
 		<label>
             Nome:
-            <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+            <input type="text" name="nome" id="nome" placeholder="Digite seu nome" value="<?= $nome ?>">
             <?= ($nomeOk? '': '<span class="erro">Preencha o campo com um nome válido') ?>
         </label>
 		<label>
             Telefone:
-            <input type="text" name="telefone" id="telefone" placeholder="Digite seu telefone">
+            <input type="text" name="telefone" id="telefone" placeholder="Digite seu telefone" value="<?= $telefone ?>">
+            <?= ($telefoneOk? '': '<span class="erro">Digite um telefone válido')?>
         </label>
 		<label>
             E-mail:
-            <input type="email" name="email" id="email" placeholder="Digite seu email">
+            <input type="email" name="email" id="email" placeholder="Digit$e seu email" value="<?= $email ?>">
+            <?= ($emailOk? '': '<span class="erro">O e-mail está incorreto') ?>
         </label>
 		<label>
             Endereço:
-            <input type="text" name="endereco" id="endereco" placeholder="Digite seu endereco">
+            <input type="text" name="endereco" id="endereco" placeholder="Digite seu endereco" value="<?= $endereco ?>">
+            <?= ($enderecoOk? '': '<span class="erro">Digite um endereço válido')?>
         </label>
 		<label>
             Senha:
-            <input type="password" name="senha" id="senha" placeholder="Digite uma senha">
-            <?= ($nomeOk? '': '<span class="erro">A senha e a confirmação de senha estão diferentes') ?>
+            <input type="password" name="senha" id="senha" placeholder="Digite uma senha" value="<?= $senha ?>">
+            <?= ($senhaOk? '': '<span class="erro">A senha e a confirmação de senha estão diferentes') ?>
         </label>
 		<label>
             Confirmação:
             <input type="password" name="confirmacao" id="confirmacao" placeholder="Confirme a senha digitada">
+            <?= ($corfirmacaoOk? '': '<span class="erro">A senha e a confirmação de senha estão diferentes') ?>
         </label>
 		<label>
             <img src="../img/no-image.png" id="foto-carregada">
