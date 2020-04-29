@@ -193,7 +193,11 @@
           // codificando o array geral para o formato json
           $json = json_encode($usuarios);
 
-          // colocando a nova array dentro do arquivo json, diz o caminho e depois qual variavel vai entrar
-          file_put_contents('includes/usuarios.json', $json);
+          if(strlen($json) > 0) {
+        // colocando a nova array dentro do arquivo json, diz o caminho e depois qual variavel vai entrar
+                file_put_contents('includes/usuarios.json', $json);
+          }
+
+          
       } 
 ?>

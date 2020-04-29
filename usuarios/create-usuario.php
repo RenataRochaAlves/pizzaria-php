@@ -1,5 +1,6 @@
 <?php 
 
+include('../includes/functions.php');
 
 $nome = '';
 $senha = '';
@@ -43,6 +44,10 @@ if($_POST){
     }
     if(strpos($email, '@') == false){
         $emailOk = false;
+    }
+
+    if($nomeOk && $senhaOK && $telefoneOk && $enderecoOk && $emailOk){
+        addUsuario($nome,$telefone,$endereco,$senha,$imagem);
     }
  }
 
