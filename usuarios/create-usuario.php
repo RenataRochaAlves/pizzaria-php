@@ -10,7 +10,7 @@ $endereco = '';
 $email = '';
 
 $nomeOk = true;
-$senhaOK = true;
+$senhaOk = true;
 $confirmacaoOk = true;
 $telefoneOk = true;
 $enderecoOk = true;
@@ -25,6 +25,7 @@ if($_POST){
     $telefone = $_POST['telefone'];
     $endereco = $_POST['endereco'];
     $email = $_POST['email'];
+    $imagem = null;
 
     // mede o tamanho da string e diz se ela é menor
     if(strlen($nome) < 5){
@@ -46,7 +47,7 @@ if($_POST){
         $emailOk = false;
     }
 
-    if($nomeOk && $senhaOK && $telefoneOk && $enderecoOk && $emailOk){
+    if($nomeOk && $senhaOk && $telefoneOk && $enderecoOk && $emailOk){
         addUsuario($nome,$telefone,$endereco,$senha,$imagem);
     }
  }
@@ -94,7 +95,7 @@ if($_POST){
 		<label>
             Confirmação:
             <input type="password" name="confirmacao" id="confirmacao" placeholder="Confirme a senha digitada">
-            <?= ($corfirmacaoOk? '': '<span class="erro">A senha e a confirmação de senha estão diferentes') ?>
+            <?= ($confirmacaoOk? '': '<span class="erro">A senha e a confirmação de senha estão diferentes') ?>
         </label>
 		<label>
             <img src="../img/no-image.png" id="foto-carregada">

@@ -163,7 +163,7 @@
     function carregaUsuario(){
 
         // puxa os dados do arquivo json
-        $json = file_get_contents('includes/usuarios.json');
+        $json = file_get_contents('../includes/usuarios.json');
 
         // decodifica de json pra array associativo
         $usuarios = json_decode($json, true);
@@ -195,7 +195,7 @@
 
           if(strlen($json) > 0) {
         // colocando a nova array dentro do arquivo json, diz o caminho e depois qual variavel vai entrar
-                file_put_contents('includes/usuarios.json', $json);
+                file_put_contents('../includes/usuarios.json', $json);
           }
 
           
